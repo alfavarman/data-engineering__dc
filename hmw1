@@ -1,0 +1,10 @@
+docker cp ./taxi_zone_lookup.csv e546c6a2d4fb:/tmp/taxi_zone_lookup.csv
+docker cp ./green_tripdata_2019-10.csv e546c6a2d4fb:/tmp/green_tripdata_2019-10.csv
+
+
+
+docker exec -i e546c6a2d4fb psql -U postgres -d nyc_taxi -c "\COPY taxi_zone_lookup FROM '/tmp/taxi_zone_lookup.csv' DELIMITER ',' CSV HEADER;"
+docker exec -i e546c6a2d4fb psql -U postgres -d nyc_taxi -c "\COPY green_tripdata FROM '/tmp/green_tripdata_2019-10.csv' DELIMITER ',' CSV HEADER;"
+
+
+104830,198995,109642,27686,35201
